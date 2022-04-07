@@ -1,0 +1,11 @@
+<%= image_tag "alchemist.jpg", size: "240x148", class: "sign-up-image rounded mx-auto m-3" %>
+<h3 class="text-center">Takasu<br>Senin Takas Platformun!</h3>
+<div class="d-flex flex-row justify-content-center">
+  <div class="p-2">
+    <%= button_to "Kayıt Ol", new_user_path, class: "btn btn-primary", method: :get %>
+  </div>
+  <div class="p-2">
+    <%= button_to "Giriş Yap", new_session_path, class: "btn btn-success", method: :get%>
+  </div>
+
+</div>
