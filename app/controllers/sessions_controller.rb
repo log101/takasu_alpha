@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorize, only: [:new, :create]
+  skip_before_action :authorize, only: %i[new create destroy]
 
   def new
   end
@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    puts root_path
     session[:user_id] = nil
-    redirect_to root_url, notice: "Hesabınızdan başarıyla çıkış yaptınız"
+    redirect_to root_path, notice: "Hesabınızdan başarıyla çıkış yaptınız", status: :see_other
   end
 end

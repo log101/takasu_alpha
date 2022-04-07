@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       @authorized = true
     else
       @authorized = false
-      redirect_to new_session_url, notice: "Lütfen giriş yapınız"
+      redirect_to new_session_url, notice: "Bu sayfayı görme yetkiniz yok"
     end
   end
 end
