@@ -10,4 +10,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def log_in
+    sample_user = users(:one)
+    post create_session_url, params: {
+      email: sample_user.email,
+      password: "secret" # This is the unencrypted password, see users.yaml
+    }
+  end
 end

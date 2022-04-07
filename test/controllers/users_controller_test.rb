@@ -3,9 +3,10 @@ require "test_helper"
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
+    log_in
   end
 
-  test "should get index" do
+  test "should see users when logged in" do
     get users_url
     assert_response :success
   end
@@ -20,7 +21,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       post users_url, params: { user: { email: @user.email, name: @user.name, password: "secret", password_confirmation: "secret" } }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to new_session_url
   end
 
   test "should show user" do

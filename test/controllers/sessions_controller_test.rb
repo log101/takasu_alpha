@@ -13,12 +13,12 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       password: "secret" # This is the unencrypted password, see users.yaml
     }
     assert_redirected_to user_path(sample_user)
-
   end
 
 
-  test "should get destroy" do
+  test "should destroy session when logout" do
     delete destroy_session_url
+    assert_nil session[:user_id]
     assert_redirected_to root_url
   end
 
