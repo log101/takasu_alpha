@@ -15,8 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    puts root_path
     session[:user_id] = nil
-    redirect_to root_path, notice: "Hesabınızdan başarıyla çıkış yaptınız", status: :see_other
+    redirect_to new_session_url, notice: "Hesabınızdan başarıyla çıkış yaptınız", status: :see_other
   end
 end

@@ -4,7 +4,7 @@
 
 <div>
   <%= link_to "Edit this manga", edit_manga_path(@manga) %> |
-  <%= link_to "Back to mangas", mangas_path %>
+  <%= link_to "Back to mangas", user_mangas_path(@user) %>
 
   <%= button_to "Destroy this manga", @manga, method: :delete %>
 </div>

@@ -20,8 +20,8 @@
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= manga.user_id %>
+    <strong>Owner:</strong>
+    <%= User.find(manga.user_id).name %>
   </p>
 
   <p>

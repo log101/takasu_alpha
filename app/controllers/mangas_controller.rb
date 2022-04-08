@@ -3,7 +3,7 @@ class MangasController < ApplicationController
 
   # GET /mangas or /mangas.json
   def index
-    @mangas = Manga.all
+    @mangas = Manga.where(user_id: session[:user_id])
   end
 
   # GET /mangas/1 or /mangas/1.json
@@ -25,7 +25,7 @@ class MangasController < ApplicationController
 
     respond_to do |format|
       if @manga.save
-        format.html { redirect_to manga_url(@manga), notice: "Manga was successfully created." }
+        format.html { redirect_to user_mangas_url(@manga), notice: "Manga was successfully created." }
         format.json { render :show, status: :created, location: @manga }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class MangasController < ApplicationController
   def update
     respond_to do |format|
       if @manga.update(manga_params)
-        format.html { redirect_to manga_url(@manga), notice: "Manga was successfully updated." }
+        format.html { redirect_to user_manga_url(@manga), notice: "Manga was successfully updated." }
         format.json { render :show, status: :ok, location: @manga }
       else
         format.html { render :edit, status: :unprocessable_entity }
