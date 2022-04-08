@@ -1,0 +1,47 @@
+<%= form_with(model: manga) do |form| %>
+  <% if manga.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(manga.errors.count, "error") %> prohibited this manga from being saved:</h2>
+
+      <ul>
+        <% manga.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :genre, style: "display: block" %>
+    <%= form.text_field :genre %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :volumes, style: "display: block" %>
+    <%= form.text_field :volumes %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :image_url, style: "display: block" %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

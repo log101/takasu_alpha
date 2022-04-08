@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_06_062111) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_08_020454) do
+  create_table "mangas", force: :cascade do |t|
+    t.string "title"
+    t.string "genre"
+    t.text "description"
+    t.string "volumes"
+    t.integer "user_id", null: false
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_mangas_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -19,4 +31,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_06_062111) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "mangas", "users"
 end

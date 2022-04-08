@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mangas
   get 'home/index'
   get 'sessions/new', to: 'sessions#new', as: 'new_session'
   post 'sessions/create', to: 'sessions#create', as: 'create_session'
