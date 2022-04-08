@@ -39,7 +39,7 @@ class MangasController < ApplicationController
   def update
     respond_to do |format|
       if @manga.update(manga_params)
-        format.html { redirect_to user_manga_url(@manga), notice: "Manga was successfully updated." }
+        format.html { redirect_to user_url(@user), notice: "Manga was successfully updated." }
         format.json { render :show, status: :ok, location: @manga }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,9 +51,10 @@ class MangasController < ApplicationController
   # DELETE /mangas/1 or /mangas/1.json
   def destroy
     @manga.destroy
+    flash[:notice] = "Manga was successfully destroyed"
 
     respond_to do |format|
-      format.html { redirect_to user_url, notice: "Manga was successfully destroyed." }
+      format.html { redirect_to user_mangas_url(@user) } # TODO: Couldn't redirect properly
       format.json { head :no_content }
     end
   end
@@ -63,6 +64,7 @@ class MangasController < ApplicationController
     def set_manga
       @manga = Manga.find(params[:id])
     end
+
 
     # Only allow a list of trusted parameters through.
     def manga_params

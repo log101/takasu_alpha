@@ -9,8 +9,8 @@
       <li class="list-group-item">Elindeki ciltler: <%= manga.volumes %></li>
     </ul>
     <div class="card-body">
-      <a href="#" class="card-link">Paylaş</a>
       <%= link_to "Mangayı sil", manga_path(manga), data: { turbo_method: :delete }, class: "card-link" %>
+      <%= link_to "Mangayı düzenle", edit_manga_path(manga), class: "card-link" %>
     </div>
     <div class="card-footer text-muted">
       <%= manga.created_at %> tarihinde ekledin

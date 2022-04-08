@@ -1,12 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  genre: MyString
-  description: MyText
-  volumes: MyString
+  title: Full Metal Alchemist
+  genre: Shounen
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  volumes: 1-23
   user: one
-  image_url: MyString
+  image_url: alchemist.jpg
 
 two:
   title: MyString

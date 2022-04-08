@@ -15,7 +15,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Password", with: "secret"
     click_on "Giriş Yap"
 
-    assert_text "Name: furkan"
+    assert_text "Kullanıcı Adı: furkan"
   end
 
   test "visiting the index" do
@@ -24,6 +24,7 @@ class UsersTest < ApplicationSystemTestCase
   end
 
   test "should create user" do
+    click_on "Çıkış Yap"
     visit root_url
     click_on "Kayıt Ol"
 
@@ -31,7 +32,7 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Name", with: @user.name
     fill_in "Password", with: "secret"
     fill_in "Password confirmation", with: "secret"
-    click_on "Kayıt"
+    click_on "Kayıt Ol"
 
     assert_text "Başarıyla kayıt oldunuz, şimdi giriş yapabilirsiniz!"
   end

@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+  <div class="notice"><p><%= flash[:notice] %></p></div>
+<% end %>
+
 <%= image_tag "alchemist.jpg", size: "240x148", class: "sign-up-image rounded mx-auto m-3" %>
 <h3 class="text-center">Takasu<br>Senin Takas Platformun!</h3>
 <div class="d-flex flex-row justify-content-center">
