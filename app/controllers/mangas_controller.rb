@@ -22,10 +22,11 @@ class MangasController < ApplicationController
   # POST /mangas or /mangas.json
   def create
     @manga = Manga.new(manga_params)
+    @user = User.find(@manga.user_id)
 
     respond_to do |format|
       if @manga.save
-        format.html { redirect_to user_mangas_url(@manga), notice: "Manga was successfully created." }
+        format.html { redirect_to @user, notice: "Manga was successfully created." }
         format.json { render :show, status: :created, location: @manga }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class MangasController < ApplicationController
     @manga.destroy
 
     respond_to do |format|
-      format.html { redirect_to mangas_url, notice: "Manga was successfully destroyed." }
+      format.html { redirect_to user_url, notice: "Manga was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -1,12 +1,19 @@
 <div id="<%= dom_id user %>">
-  <p>
-    <strong>Name:</strong>
-    <%= user.name %>
-  </p>
+  <p class="user-text">Kullanıcı Adı: <%= user.name %></p>
+  <p class="user-text">Elektronik Posta: <%= user.email %></p>
+  <p class="user-description"><%= user.description %></p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
+  <div>
+    <%= link_to "Edit this user", edit_user_path(@user) %> |
+    <%= link_to "Back to users", users_path %>
+
+    <%= button_to "Destroy this user", @user, method: :delete %>
+  </div>
+  <hr/>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <h4 class="m-1">Mangalarım</h4>
+    <%= button_to "+", new_user_manga_path(user), class: "btn btn-success btn-sm m-1", method: :get %>
+  </div>
 
 </div>

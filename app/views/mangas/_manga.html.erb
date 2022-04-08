@@ -1,32 +1,19 @@
 <div id="<%= dom_id manga %>">
-  <p>
-    <strong>Title:</strong>
-    <%= manga.title %>
-  </p>
-
-  <p>
-    <strong>Genre:</strong>
-    <%= manga.genre %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= manga.description %>
-  </p>
-
-  <p>
-    <strong>Volumes:</strong>
-    <%= manga.volumes %>
-  </p>
-
-  <p>
-    <strong>Owner:</strong>
-    <%= User.find(manga.user_id).name %>
-  </p>
-
-  <p>
-    <strong>Image url:</strong>
-    <%= manga.image_url %>
-  </p>
-
+  <div class="card m-2" style="width: 18rem;">
+    <%= image_tag manga.image_url, class: "card-img-top" %>
+    <div class="card-body">
+      <h5 class="card-title"><%= manga.title %></h5>
+      <h6 class="card-title text-muted"><%= manga.genre %></h6>
+      <p class="card-text"><%= manga.description %></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Elindeki ciltler: <%= manga.volumes %></li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Paylaş</a>
+      <%= link_to "Mangayı sil", manga_path(manga), data: { turbo_method: :delete }, class: "card-link" %>
+    </div>
+    <div class="card-footer text-muted">
+      <%= manga.created_at %> tarihinde ekledin
+    </div>
+  </div>
 </div>
