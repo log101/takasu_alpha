@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_08_032653) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_11_075914) do
   create_table "mangas", force: :cascade do |t|
     t.string "title"
     t.string "genre"
@@ -21,6 +21,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_08_032653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_mangas_on_user_id"
+  end
+
+  create_table "trade_items", force: :cascade do |t|
+    t.integer "trade_id", null: false
+    t.integer "manga_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manga_id"], name: "index_trade_items_on_manga_id"
+    t.index ["trade_id"], name: "index_trade_items_on_trade_id"
+  end
+
+  create_table "trades", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "status"
+    t.index ["recipient_id"], name: "index_trades_on_recipient_id"
+    t.index ["sender_id"], name: "index_trades_on_sender_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_08_032653) do
   end
 
   add_foreign_key "mangas", "users"
+  add_foreign_key "trade_items", "mangas"
+  add_foreign_key "trade_items", "trades"
 end

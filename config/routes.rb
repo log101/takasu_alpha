@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :trades
   get 'search', to: 'search#index', as: 'search_index'
   get 'search/:query', to: 'search#search', as: 'search_query'
 
