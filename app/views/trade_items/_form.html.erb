@@ -1,0 +1,27 @@
+<%= form_with(model: trade_item) do |form| %>
+  <% if trade_item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(trade_item.errors.count, "error") %> prohibited this trade_item from being saved:</h2>
+
+      <ul>
+        <% trade_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :trade_id, style: "display: block" %>
+    <%= form.text_field :trade_id %>
+  </div>
+
+  <div>
+    <%= form.label :manga_id, style: "display: block" %>
+    <%= form.text_field :manga_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

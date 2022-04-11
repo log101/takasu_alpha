@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  trade: one
-  manga: one
+  trade_id: MyString
+  manga_id: MyString
 
 two:
-  trade: two
-  manga: two
+  trade_id: MyString
+  manga_id: MyString

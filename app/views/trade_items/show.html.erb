@@ -1,1 +1,10 @@
-<h1>trade_item#show</h1>
+<p style="color: green"><%= notice %></p>
+
+<%= render @trade_item %>
+
+<div>
+  <%= link_to "Edit this trade item", edit_trade_item_path(@trade_item) %> |
+  <%= link_to "Back to trade items", trade_items_path %>
+
+  <%= button_to "Destroy this trade item", @trade_item, method: :delete %>
+</div>

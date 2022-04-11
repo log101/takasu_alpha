@@ -1,1 +1,6 @@
-<li><%= manga.title %></li>
+<li>
+  <%= manga.title %>
+  <% if not trade_mangas.include?(manga) %>
+    <%= button_to "Add", trade_items_path, params: { trade_item: { trade_id: @trade.id, manga_id: manga.id } }, method: :post %>
+  <% end %>
+</li>

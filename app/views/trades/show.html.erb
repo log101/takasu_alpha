@@ -9,7 +9,7 @@
 <p>Sender: <%= @user.id %></p>
 <ul>
   <% @user.mangas.each do |manga| %>
-    <%= render "trades/manga_trade", manga: manga %>
+    <%= render "trades/manga_trade", manga: manga, trade_mangas: @trade.trade_items.map {|item| item.manga } %>
   <% end %>
 </ul>
 
@@ -17,7 +17,7 @@
 <p>Recipient: <%= @recipient.id %></p>
 <ul>
   <% @recipient.mangas.each do |manga| %>
-    <%= render "trades/manga_trade", manga: manga %>
+    <%= render "trades/manga_trade", manga: manga, trade_mangas: @trade.trade_items.map {|item| item.manga } %>
   <% end %>
 </ul>
 

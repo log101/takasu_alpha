@@ -1,4 +1,6 @@
-<li>
-  <%= Manga.find(trade_item.manga_id).title %>
-  <%= button_to "remove", destroy_trade_item_path(trade_item), method: :delete %>
-</li>
+<div id="<%= dom_id trade_item %>">
+  <li>
+    <%= Manga.find(trade_item.manga_id).title %>
+    <%= button_to "Remove", trade_item_path(trade_item), method: :delete %>
+  </li>
+</div>
