@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Agile7</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Agile7</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
-  </head>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <%= link_to "Takasu", root_url, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,32 +21,29 @@
           <a class="nav-link active" aria-current="page" href="#">Anasayfa</a>
         </li>
         <% if @authorized %>
-        <li class="nav-item">
-          <%= link_to "Kütüphanem", user_mangas_path(@user) %>
-          <a class="nav-link" href="#">Koleksiyonlarım</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Tekliflerim</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Hesabım</a>
-        </li>
+          <li class="nav-item">
+            <%= link_to "Kütüphanem", user_path(@user), class: "nav-link" %>
+            <a class="nav-link" href="#">Koleksiyonlarım</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Tekliflerim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Hesabım</a>
+          </li>
 
-        <li class="nav-item">
-          <%= link_to "Çıkış Yap", destroy_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
-        </li>
+          <li class="nav-item">
+            <%= link_to "Çıkış Yap", destroy_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+          </li>
         <% end %>
       </ul>
-      <form class="d-flex">
-      <input class="form-control m-1" type="search" placeholder="Arama Yap" aria-label="Search">
-      <button class="btn btn-outline-primary m-1" type="submit">Ara</button>
-    </form>
+      <%= render "search/search_form" %>
     </div>
   </div>
 </nav>
-  <body>
-  <div class="container-fluid">
-    <%= yield %>
-  </div>
-  </body>
+<body>
+<div class="container-fluid">
+  <%= yield %>
+</div>
+</body>
 </html>
