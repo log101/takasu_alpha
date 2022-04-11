@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   post 'sessions/create', to: 'sessions#create', as: 'create_session'
   delete 'sessions/destroy', to: 'sessions#destroy', as: 'destroy_session'
 
+  post 'trades/:id/confirm', to: 'trades#confirm_trade', as: 'confirm_trade'
 
   resources :users do
     resources :mangas, shallow: true
+    resources :trades, shallow: true
   end
 
   root 'home#index'

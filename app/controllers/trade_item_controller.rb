@@ -1,0 +1,3 @@
+class TradeItemController < ApplicationController
+
+end

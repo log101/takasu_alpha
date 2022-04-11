@@ -1,15 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @trade %>
+<p>Selected items:</p>
+<ul>
+  <%= render @trade.trade_items %>
+</ul>
 
-<% if @trade_items %>
-  <ul>
-    <%= render @trade_items %>
-  </ul>
-<% end %>
+
+<p>Sender: <%= @user.id %></p>
+<ul>
+  <% @user.mangas.each do |manga| %>
+    <%= render "trades/manga_trade", manga: manga %>
+  <% end %>
+</ul>
+
+
+<p>Recipient: <%= @recipient.id %></p>
+<ul>
+  <% @recipient.mangas.each do |manga| %>
+    <%= render "trades/manga_trade", manga: manga %>
+  <% end %>
+</ul>
+
 <div>
+  <div class="btn-group">
+    <%= button_to "Destroy this trade", @trade, class: "btn btn-danger m-1", method: :delete %>
+    <%= button_to "Confirm this trade", confirm_trade_path(@trade), class: "btn btn-success m-1" %>
+  </div>
   <%= link_to "Edit this trade", edit_trade_path(@trade) %> |
   <%= link_to "Back to trades", trades_path %>
-
-  <%= button_to "Destroy this trade", @trade, method: :delete %>
 </div>

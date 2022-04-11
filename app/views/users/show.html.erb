@@ -2,6 +2,13 @@
 
 
 <%= render @user %>
+
 <div class="d-flex flex-column align-items-center">
-<%= render @mangas %>
+  <h4 class="m-1">Mangalarım</h4>
+  <% if @user.id == session[:user_id] %>
+    <%= button_to "+ Ekle", new_user_manga_path(@user), class: "btn btn-success btn-sm m-1", method: :get %>
+  <% else %>
+    <%= button_to "Takas yap", new_trade_path, class: "btn btn-success btn-sm m-1", method: :get, params: { recipient_id: @user.id} %>
+  <% end %>
+  <%= render @mangas %>
 </div>

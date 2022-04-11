@@ -1,6 +1,8 @@
 class TradesController < ApplicationController
-  before_action :set_trade, only: %i[ show edit update destroy confirm_trade ]
+  skip_before_action :authorize, only: %i[ confirm_trade ]
 
+  before_action :set_trade, only: %i[ show edit update destroy confirm_trade ]
+  before_action :set_user, only: %i[ new confirm_trade ]
   # GET /trades or /trades.json
   def index
     @trades = Trade.all
@@ -8,12 +10,17 @@ class TradesController < ApplicationController
 
   # GET /trades/1 or /trades/1.json
   def show
+    @sender = User.find(@trade.sender_id)
+    @recipient = User.find(@trade.recipient_id)
     @trade_items = @trade.trade_items
   end
 
   # GET /trades/new
   def new
-    @trade = Trade.new
+    @trade = Trade.find_or_create_by(sender_id: @user.id, recipient_id: params[:recipient_id])
+    respond_to do |format|
+      format.html { redirect_to trade_path(@trade), notice: "Trade was successfully completed." }
+    end
   end
 
   # GET /trades/1/edit
@@ -28,6 +35,11 @@ class TradesController < ApplicationController
       else
         manga.update(user_id: @trade.sender_id)
       end
+    end
+
+    @trade.destroy
+    respond_to do |format|
+      format.html { redirect_to user_url(@user), notice: "Trade was successfully completed." }
     end
   end
 
@@ -70,13 +82,18 @@ class TradesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trade
-      @trade = Trade.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def trade_params
-      params.require(:trade).permit(:sender_id, :recipient_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_trade
+    @trade = Trade.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(session[:user_id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def trade_params
+    params.require(:trade).permit(:sender_id, :recipient_id)
+  end
 end

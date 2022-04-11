@@ -1,0 +1,2 @@
+module TradeItemHelper
+end
