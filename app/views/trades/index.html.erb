@@ -2,13 +2,16 @@
 
 <h1>Trades</h1>
 
-<div id="trades">
-  <% @trades.each do |trade| %>
-    <%= render trade %>
-    <p>
-      <%= link_to "Show this trade", trade %>
-    </p>
-  <% end %>
-</div>
+<% if @trades.empty? %>
+  <h5>You don't have any trade requests!</h5>
+<% else %>
+  <div id="trades">
+    <% @trades.each do |trade| %>
+      <%= render trade %>
+      <p>
+        <%= link_to "Show this trade", trade %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
 
-<%= link_to "New trade", new_trade_path %>

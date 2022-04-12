@@ -9,7 +9,7 @@
 <p>Sender: <%= @user.id %></p>
 <ul>
   <% @user.mangas.each do |manga| %>
-    <%= render "trades/manga_trade", manga: manga, trade_mangas: @trade.trade_items.map {|item| item.manga } %>
+    <%= render "trades/manga_trade", manga: manga, trade_mangas: @trade.trade_items.map { |item| item.manga } %>
   <% end %>
 </ul>
 
@@ -17,14 +17,19 @@
 <p>Recipient: <%= @recipient.id %></p>
 <ul>
   <% @recipient.mangas.each do |manga| %>
-    <%= render "trades/manga_trade", manga: manga, trade_mangas: @trade.trade_items.map {|item| item.manga } %>
+    <%= render "trades/manga_trade", manga: manga, trade_mangas: @trade.trade_items.map { |item| item.manga } %>
   <% end %>
 </ul>
 
 <div>
   <div class="btn-group">
     <%= button_to "Destroy this trade", @trade, class: "btn btn-danger m-1", method: :delete %>
-    <%= button_to "Confirm this trade", confirm_trade_path(@trade), class: "btn btn-success m-1" %>
+    <% if session[:user_id] == @recipient.id %>
+      <%= button_to "Confirm this trade", confirm_trade_path(@trade), class: "btn btn-success m-1" %>
+    <% else %>
+      <%= button_to "Send trade", user_path(@user), class: "btn btn-success m-1", method: :get %>
+      <% flash[:notice] = "Trade successfully sent" %>
+    <% end %>
   </div>
   <%= link_to "Edit this trade", edit_trade_path(@trade) %> |
   <%= link_to "Back to trades", trades_path %>
