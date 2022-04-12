@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
@@ -23,7 +24,6 @@
         <% if @authorized %>
           <li class="nav-item">
             <%= link_to "Kütüphanem", user_path(@user), class: "nav-link" %>
-            <a class="nav-link" href="#">Koleksiyonlarım</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Tekliflerim</a>

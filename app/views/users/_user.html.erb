@@ -1,16 +1,15 @@
-<div id="<%= dom_id user %>">
-  <p class="user-text">Kullanıcı Adı: <%= user.name %></p>
-  <p class="user-text">Elektronik Posta: <%= user.email %></p>
-  <p class="user-description"><%= user.description %></p>
+<p class="user-text">Kullanıcı Adı: <%= user.name %></p>
+<p class="user-text">Elektronik Posta: <%= user.email %></p>
+<p class="user-description"><%= user.description %></p>
 
-  <div>
-    <%= link_to "Edit this user", edit_user_path(@user) %> |
-    <%= link_to "Back to users", users_path %> |
-    <%= link_to "Show trades", trades_path %>
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %> |
+  <%= link_to "Show trades", trades_path %>
 
 
-    <%= button_to "Destroy this user", @user, method: :delete %>
-  </div>
-  <hr/>
+  <%= button_to "Destroy this user", @user, method: :delete %>
+</div>
+<hr/>
 
 </div>
